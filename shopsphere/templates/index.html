@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block csslink %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+<!-- ================= HERO SECTION ================= -->
+{% block content1 %}
+ <section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to ShopSphere</h1>
+        <p>Your one-stop shop for everything you love</p>
+        <button>Shop Now</button>
+    </div>
+ </section>
+{% endblock %}
+ <!-- ================= FEATURED PRODUCTS ================= -->
+{% block content2 %}
+  <section class="section">
+    <h2>🔥 Featured Products</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="{% static 'images/p1.jpg' %}" alt="">
+            <h3>Product 1</h3>
+            <p>$25</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/p2.jpg' %}" alt="">
+            <h3>Product 2</h3>
+            <p>$40</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/p3.jpg' %}" alt="">
+            <h3>Product 3</h3>
+            <p>$60</p>
+            <button>Add to Cart</button>
+        </div>
+
+    </div>
+ </section>
+{% endblock %}
+  <!-- ================= CATEGORIES ================= -->
+{% block content3 %}
+   <section class="section categories">
+    <h2>📂 Categories</h2>
+
+    <div class="category-grid">
+        <div class="category">Electronics</div>
+        <div class="category">Fashion</div>
+        <div class="category">Home</div>
+        <div class="category">Books</div>
+    </div>
+ </section>
+{% endblock %}

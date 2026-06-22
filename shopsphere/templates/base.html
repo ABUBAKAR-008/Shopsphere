@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ShopSphere - Home{% endblock %}</title>
+    {% block csslink %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="logo">🛒 ShopSphere</div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search products...">
+        <button>Search</button>
+    </div>
+
+    <div class="nav-links">
+        
+        {% if request.user.is_authenticated %}
+            <a class="prodct_link" href="{% url 'products:allproducts' %}">Products</a>
+            <span>Hi, {{ request.user.username }}</span>
+            <a href="{% url 'accounts:logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Login</a>
+            <a href="{% url 'accounts:register' %}">Register</a>
+        {% endif %}
+        <a href="#">Cart 🛒</a>
+        <a href="#">Buy histroy 🛍️</a>
+    </div>
+</header>
+<!-- ================= HERO SECTION ================= -->
+{% block content1 %}{% endblock %}
+<!-- ================= FEATURED PRODUCTS ================= -->
+{% block content2 %}{% endblock %}
+<!-- ================= CATEGORIES ================= -->
+{% block content3 %}{% endblock %}
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div>
+        <h3>ShopSphere</h3>
+        <p>Your trusted online store</p>
+    </div>
+
+    <div>
+        <h4>Quick Links</h4>
+        <a href="#">About</a><br>
+        <a href="#">Contact</a><br>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+    <div>
+        <h4>Contact</h4>
+        <p>Email: support@shopsphere.com</p>
+        <p>Phone: +92 300 0000000</p>
+    </div>
+</footer>
+
+</body>
+</html>
