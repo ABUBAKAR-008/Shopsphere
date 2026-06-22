@@ -42,3 +42,8 @@
       width: 100%;
       padding-block: 10px;
 }
+
+.cat_stock_price p{
+      display: flex;
+      flex-direction: row;
+}

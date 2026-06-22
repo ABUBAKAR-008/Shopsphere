@@ -14,7 +14,9 @@
 
 <!-- ================= NAVBAR ================= -->
 <header class="navbar">
-    <div class="logo">🛒 ShopSphere</div>
+
+    <div class="logo"><a href="{% url 'home' %}">🛒 ShopSphere</a></div>
+     
 
     <div class="search-box">
         <input type="text" placeholder="Search products...">
@@ -24,6 +26,7 @@
     <div class="nav-links">
         
         {% if request.user.is_authenticated %}
+            <a href="{% url 'home' %}">Home</a>
             <a class="prodct_link" href="{% url 'products:allproducts' %}">Products</a>
             <span>Hi, {{ request.user.username }}</span>
             <a href="{% url 'accounts:logout' %}">Logout</a>

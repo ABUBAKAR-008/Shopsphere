@@ -4,12 +4,13 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 {% endblock %}
 <!-- ================= HERO SECTION ================= -->
+
 {% block content1 %}
  <section class="hero">
     <div class="hero-content">
         <h1>Welcome to ShopSphere</h1>
         <p>Your one-stop shop for everything you love</p>
-        <button>Shop Now</button>
+        <a href="{% url 'products:allproducts' %}"><button>Shop Now</button></a>
     </div>
  </section>
 {% endblock %}
@@ -17,31 +18,26 @@
 {% block content2 %}
   <section class="section">
     <h2>🔥 Featured Products</h2>
-
     <div class="grid">
-
+{% for product in products  %}
         <div class="card">
-            <img src="{% static 'images/p1.jpg' %}" alt="">
-            <h3>Product 1</h3>
-            <p>$25</p>
-            <button>Add to Cart</button>
+            {% if product.photo %}
+                <img src="{{ product.photo.url }}" alt="{{ product.name }}">
+            {% else %}
+                <img src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
+            {% endif %}
+            <h3><strong>Name:</strong>{{ product.name }}</h3>
+            <p><strong>Description:</strong> {{product.description}}</p>
+            <p><strong>Price:</strong>{{ product.prices }}$</p>
         </div>
-
-        <div class="card">
-            <img src="{% static 'images/p2.jpg' %}" alt="">
-            <h3>Product 2</h3>
-            <p>$40</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="card">
-            <img src="{% static 'images/p3.jpg' %}" alt="">
-            <h3>Product 3</h3>
-            <p>$60</p>
-            <button>Add to Cart</button>
-        </div>
+        
+{% endfor %}
+ 
 
     </div>
+<div class="explore_more">
+    <a href="{% url 'products:allproducts' %}">Explore More</a>
+</div>
  </section>
 {% endblock %}
   <!-- ================= CATEGORIES ================= -->

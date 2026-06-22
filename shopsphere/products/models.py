@@ -2,10 +2,10 @@ from django.db import models
 # Create your models here.
 class product(models.Model):
       catagory_choices=[
-           ('sp', 'sports'),
-           ('clo', 'cloth'),
-           ('fash','fashion'),
-           ('lapt','laptop'),
+           ('sport', 'sports'),
+           ('cloth', 'cloth'),
+           ('fashion','fashion'),
+           ('laptop','laptop'),
            ('pc','Computer'),
       ]
       name = models.CharField(max_length=240)
