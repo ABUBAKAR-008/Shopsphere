@@ -13,6 +13,7 @@ class product(models.Model):
       description = models.TextField(max_length=300)
       catagory = models.CharField(choices=catagory_choices)
       stock = models.IntegerField()
+      prices = models.IntegerField(default=0)
 
       
       def __str__(self):

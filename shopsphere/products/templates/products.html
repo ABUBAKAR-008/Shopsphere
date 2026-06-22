@@ -20,8 +20,12 @@
             {% endif %}
             <h3>{{ product.name }}</h3>
             <p><strong>description:</strong>{{ product.description }}</p>
-            <p><strong>Category:</strong> {{ product.catagory }}</p>
-            <p><strong>Stock:</strong> {{ product.stock }}</p>
+            <div>
+                <p><strong>Category:</strong> {{ product.catagory }}</p>
+                <p><strong>Stock:</strong> {{ product.stock }}</p>
+                <p><strong>Price:</strong> {{ product.prices }}</p>
+            </div>
+           
             <div class="buttons">
                   <button>Buy Now</button>
                   <button>Add to Cart</button>
