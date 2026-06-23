@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ShopSphere - Order Confirmation{% endblock %}
+
+{% block content1 %}
+<section class="section">
+
+    <div class="order-container">
+
+        <h1 class="order-title">Order Confirmation</h1>
+
+        <h3 class="order-heading">Order Items</h3>
+
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in order.items.all %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>${{ item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.price|add:0 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        <div class="order-total">
+            <h3>Total: ${{ order.total_cost }}</h3>
+        </div>
+
+        <div class="order-actions">
+            <a href="{% url 'products:allproducts' %}" class="btn-secondary">
+                Continue Shopping
+            </a>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

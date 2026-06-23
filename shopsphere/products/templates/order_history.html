@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ShopSphere - Buy History{% endblock %}
+
+{% block content1 %}
+<section class="section">
+    <h1>Your Order History</h1>
+    
+    {% if orders %}
+    <div class="order-list">
+        {% for order in orders %}
+        <div class="order-card">
+            <div class="order-header">
+                <div>
+                    <h3>Order #{{ order.id }}</h3>
+                    <p class="order-date">{{ order.created_at|date:"M d, Y - H:i" }}</p>
+                </div>
+            </div>
+            
+            <div class="order-items">
+                <h4>Items:</h4>
+                {% for item in order.items.all %}
+                <p>{{ item.quantity }}x {{ item.product.name }} - ${{ item.price }} each</p>
+                {% endfor %}
+            </div>
+            
+            <div class="order-footer">
+                <strong>Total: ${{ order.total_cost }}</strong>
+                <a href="{% url 'products:order_confirmation' order.id %}" class="view-details">View Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>You haven't placed any orders yet. <a href="{% url 'products:allproducts' %}">Start shopping now!</a></p>
+    {% endif %}
+</section>
+{% endblock %}
