@@ -54,7 +54,6 @@ def buy_now(request, product_id):
       order = Order.objects.create(
             user=request.user,
             total_cost=total_cost,
-            status='pending'
       )
       
       OrderItem.objects.create(

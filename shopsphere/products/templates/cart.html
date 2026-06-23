@@ -31,9 +31,13 @@
         <div class="cart-total">
             <strong>Total:</strong>{{ total_cost }}$
         </div>
+         <div class="add_more_in_cart">
+            <a style="background-color:  #0ea5e9; padding: 10px 30px; font-size: 1.5rem; color: white; text-decoration: none; border-radius: 10px; display:flex;justify-content: center; align-item: center; margin-top: 2rem;" href="{% url "products:allproducts" %}">Add More</a>
+      </div>
     </div>
     {% else %}
     <p>Your cart is empty. Add some products from the <a href="{% url 'products:allproducts' %}">products page</a>.</p>
+     
     {% endif %}
 </section>
 {% endblock %}
