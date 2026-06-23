@@ -15,20 +15,28 @@
     <div class="grid-product">
         {% for product in allproducts %}
         <div class="card">
+            <div>
             {% if product.photo %}
             <img src="{{ product.photo.url }}" alt="{{ product.name }}">
             {% endif %}
             <h3>{{ product.name }}</h3>
             <p><strong>description:</strong>{{ product.description }}</p>
             <div class="cat_stock_price">
-                <p><strong>Category:</strong> {{ product.catagory }}</p>
-                <p><strong>Stock: </strong> {{ product.stock }}</p>
-                <p><strong>Price: </strong> {{ product.prices }}</p>
+                <p>
+                    <span class="para-tag1"><strong>Category:</strong> {{ product.catagory }}</span>
+                </p>
+                <p>
+                    <span class="para-tag2"><strong>Stock:</strong> {{ product.stock }}</span>
+                </p>
+                <p>
+                    <span class="para-tag3"><strong>Price:</strong> {{ product.prices }}$</span>
+                </p>
             </div>
            
             <div class="buttons">
                   <button>Buy Now</button>
                   <button>Add to Cart</button>
+            </div>
             </div>
         </div>
         {% endfor %}

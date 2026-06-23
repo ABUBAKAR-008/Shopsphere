@@ -14,9 +14,9 @@
 }
 .card{
       display: flex;
-      flex-direction: column;
-      gap: -10px;
-      width: 300px;
+      width: 400px;
+      flex-wrap: wrap;
+      gap: 20px;
       background-color: red;
 }
 .card h3{
@@ -42,8 +42,18 @@
       width: 100%;
       padding-block: 10px;
 }
-
-.cat_stock_price p{
-      display: flex;
-      flex-direction: row;
+.para-tag1{
+      background-color: rgb(211, 71, 71) !important;
+      padding: 9px 8px;
+      border-radius: 15px;
+}
+.para-tag2{
+      background-color: rgb(5, 5, 204) !important;
+      padding: 9px 8px;
+      border-radius: 15px;
+}
+.para-tag3{
+      background-color: rgb(226, 82, 205) !important;
+      padding: 9px 8px;
+      border-radius: 15px;
 }
