@@ -209,7 +209,7 @@ span.helptext {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom: 5rem;
+    margin-bottom:5rem;
 }
 
 .card img {
@@ -264,7 +264,6 @@ span.helptext {
     color: white;
     display: flex;
     justify-content: space-around;
-    
     margin-top: 40px;
 }
 
@@ -279,7 +278,7 @@ span.helptext {
 
 .cat_stock_price{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     color: white;
@@ -309,7 +308,9 @@ span.helptext {
 
 
 /* ===== CART PAGE ONLY ===== */
-
+.card p{
+    margin-left: 0;
+}
 .cart-list{
     background: #ffffff;
     padding: 25px;
@@ -380,17 +381,11 @@ span.helptext {
         #38bdf8,
         #0ea5e9
     );
-
     color: white;
-
     padding: 18px;
-
     border-radius: 12px;
-
     text-align: right;
-
     font-size: 24px;
-
     font-weight: bold;
 }
 

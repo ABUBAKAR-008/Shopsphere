@@ -5,7 +5,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      
       padding: 20px;
 }
 .card img{
@@ -44,19 +43,19 @@
 }
 .para-tag1{
       background-color: rgb(211, 71, 71) !important;
-      padding: 9px 8px;
+      padding: 4px 5px;
       border-radius: 15px;
       color: white;
 }
 .para-tag2{
       background-color: rgb(5, 5, 204) !important;
-      padding: 9px 8px;
+      padding: 4px 5px;
       border-radius: 15px;
       color: white;
 }
 .para-tag3{
       background-color: rgb(226, 82, 205) !important;
-      padding: 9px 8px;
+      padding: 4px 5px;
       border-radius: 15px;
       color: white;
 }
