@@ -289,13 +289,7 @@ span.helptext {
     display: flex;
     gap: 2px;
 }
-.home_card_price{
-    background-color: blue;
-    width: fit-content;
-    padding: 10px 20px;
-    border-radius: 15px;
-    color: white !important;
-}
+
 .Featured_product{
     display: flex;
     justify-content: center;
@@ -404,4 +398,32 @@ span.helptext {
 
 .section p a:hover{
     text-decoration: underline;
+}
+
+
+.hometag{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.home_card_price{
+    background-color: blue;
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: white !important;
+}
+.home_card_catagory{
+ background-color: rgb(139, 64, 3);
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: white !important;
+}
+.home_card_stock{
+ background-color: rgb(4, 144, 141);
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: white !important;
 }

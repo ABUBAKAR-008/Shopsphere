@@ -28,7 +28,11 @@
             {% endif %}
             <h3><strong>Name:</strong>{{ product.name }}</h3>
             <p><strong>Description:</strong> {{product.description}}</p>
+            <div class="hometag">
             <p class="home_card_price"><strong>Price:</strong>{{ product.prices }}$</p>
+            <p class="home_card_catagory"><strong>Catagory:</strong>{{ product.catagory }}</p>
+            <p class="home_card_stock"><strong>Stock:</strong>{{ product.stock }}</p>
+            </div>
         </div>
         
 {% endfor %}
@@ -41,16 +45,3 @@
 </section>
 {% endblock %}
   <!-- ================= CATEGORIES ================= -->
-{% block content3 %}
-   <section class="section categories">
-    <h2>📂 Categories</h2>
-
-    <div class="category-grid">
-        <a class="category" href="{% url 'products:products_by_category' 'sport' %}">Sports</a>
-        <a class="category" href="{% url 'products:products_by_category' 'fashion' %}">Fashion</a>
-        <a class="category" href="{% url 'products:products_by_category' 'cloth' %}">Cloth</a>
-        <a class="category" href="{% url 'products:products_by_category' 'laptop' %}">Laptop</a>
-        <a class="category" href="{% url 'products:products_by_category' 'pc' %}">Computer</a>
-    </div>
- </section>
-{% endblock %}

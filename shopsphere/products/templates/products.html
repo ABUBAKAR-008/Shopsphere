@@ -7,8 +7,20 @@
 <link rel="stylesheet" href="{% static 'products/static/products.css' %}">
 <link rel="stylesheet" href="{% static 'style.css' %}">
 {% endblock %}
-
 {% block content1 %}
+<section class="section categories">
+    <h2>📂 Categories</h2>
+
+    <div class="category-grid">
+        <a class="category" href="{% url 'products:products_by_category' 'sport' %}">Sports</a>
+        <a class="category" href="{% url 'products:products_by_category' 'fashion' %}">Fashion</a>
+        <a class="category" href="{% url 'products:products_by_category' 'cloth' %}">Cloth</a>
+        <a class="category" href="{% url 'products:products_by_category' 'laptop' %}">Laptop</a>
+        <a class="category" href="{% url 'products:products_by_category' 'pc' %}">Computer</a>
+    </div>
+ </section>
+{% endblock %}
+{% block content2 %}
 <section class="section">
     <h1>{% if category_name %}{{ category_name|title }} Products{% else %}All Products{% endif %}</h1>
     {% if category_name %}
