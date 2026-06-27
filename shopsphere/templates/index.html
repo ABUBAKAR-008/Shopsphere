@@ -38,7 +38,7 @@
 <div class="explore_more">
     <a href="{% url 'products:allproducts' %}">Explore More</a>
 </div>
- </section>
+</section>
 {% endblock %}
   <!-- ================= CATEGORIES ================= -->
 {% block content3 %}
@@ -46,10 +46,11 @@
     <h2>📂 Categories</h2>
 
     <div class="category-grid">
-        <div class="category">Electronics</div>
-        <div class="category">Fashion</div>
-        <div class="category">Home</div>
-        <div class="category">Books</div>
+        <a class="category" href="{% url 'products:products_by_category' 'sport' %}">Sports</a>
+        <a class="category" href="{% url 'products:products_by_category' 'fashion' %}">Fashion</a>
+        <a class="category" href="{% url 'products:products_by_category' 'cloth' %}">Cloth</a>
+        <a class="category" href="{% url 'products:products_by_category' 'laptop' %}">Laptop</a>
+        <a class="category" href="{% url 'products:products_by_category' 'pc' %}">Computer</a>
     </div>
  </section>
 {% endblock %}

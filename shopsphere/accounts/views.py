@@ -27,8 +27,7 @@ def login_view(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request, user)
-            messages.success(request, f'Welcome back, {user.username}!')
+            login(request, user)     
             return redirect('home')
     else:
         form = AuthenticationForm()

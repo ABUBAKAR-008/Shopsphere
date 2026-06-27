@@ -9,6 +9,15 @@ def allproducts_view(request):
       allproducts = product.objects.all()
       return render(request, 'products.html', {'allproducts' : allproducts})
 
+def products_by_category(request, category):
+      category = category.lower()
+      allproducts = product.objects.filter(catagory=category)
+      category_display = dict(product.catagory_choices).get(category, category)
+      return render(request, 'products.html', {
+            'allproducts': allproducts,
+            'category_name': category_display,
+      })
+
 @login_required
 def add_to_cart(request, product_id):
       if request.method != 'POST':

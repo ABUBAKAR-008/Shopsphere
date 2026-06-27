@@ -249,13 +249,14 @@ span.helptext {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
 }
-
 .category {
     background: white;
     padding: 20px;
     border-radius: 10px;
     font-weight: bold;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: black;
 }
 
 /* FOOTER */
