@@ -18,10 +18,10 @@
     <div class="logo"><a href="{% url 'home' %}">🛒 ShopSphere</a></div>
      
 
-    {% comment %} <div class="search-box">
-        <input type="text" placeholder="Search products...">
-        <button>Search</button>
-    </div> {% endcomment %}
+    <form class="search-box" action="{% url 'products:allproducts' %}" method="get">
+        <input type="text" name="q" placeholder="Search products..." value="{{ request.GET.q|default_if_none:'' }}">
+        <button type="submit">Search</button>
+    </form>
 
     <div class="nav-links">
         <a href="{% url 'home' %}">Home</a>

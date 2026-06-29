@@ -1,13 +1,23 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import product, CartItem, Order, OrderItem
 
 # Create your views here.
 
 def allproducts_view(request):
-      allproducts = product.objects.all()
-      return render(request, 'products.html', {'allproducts' : allproducts})
+      query = request.GET.get('q', '').strip()
+      if query:
+            allproductsname = product.objects.filter(name__icontains=query)
+            allproductscatagory = product.objects.filter(catagory__icontains=query)
+            allproducts = allproductsname.union(allproductscatagory)
+      else:
+            allproducts = product.objects.all()
+      return render(request, 'products.html', {
+            'allproducts': allproducts,
+            'search_query': query,
+      })
 
 def products_by_category(request, category):
       category = category.lower()
@@ -24,6 +34,11 @@ def add_to_cart(request, product_id):
             return redirect('products:allproducts')
 
       product_obj = get_object_or_404(product, pk=product_id)
+
+      if product_obj.stock <= 0:
+            messages.error(request, f"{product_obj.name} is out of stock.")
+            return redirect('products:allproducts')
+
       cart_item, created = CartItem.objects.get_or_create(
             user=request.user,
             product=product_obj,
@@ -31,8 +46,12 @@ def add_to_cart(request, product_id):
       )
 
       if not created:
+            if cart_item.quantity + 1 > product_obj.stock:
+                  messages.error(request, f"Only {product_obj.stock} item(s) available for {product_obj.name}.")
+                  return redirect('products:cart')
             cart_item.quantity += 1
-            cart_item.save()  
+            cart_item.save()
+
       return redirect('products:cart')
 
 @login_required
@@ -59,19 +78,33 @@ def buy_now(request, product_id):
       if quantity <= 0:
             quantity = 1
 
-      total_cost = product_obj.prices * quantity
-      order = Order.objects.create(
-            user=request.user,
-            total_cost=total_cost,
-      )
-      
-      OrderItem.objects.create(
-            order=order,
-            product=product_obj,
-            quantity=quantity,
-            price=product_obj.prices
-      )
+      if product_obj.stock <= 0:
+            messages.error(request, f"{product_obj.name} is out of stock.")
+            return redirect('products:allproducts')
 
+      if quantity > product_obj.stock:
+            messages.error(request, f"Only {product_obj.stock} item(s) available for {product_obj.name}.")
+            return redirect('products:allproducts')
+
+      total_cost = product_obj.prices * quantity
+
+      with transaction.atomic():
+            product_obj.stock -= quantity
+            product_obj.save()
+
+            order = Order.objects.create(
+                  user=request.user,
+                  total_cost=total_cost,
+            )
+            
+            OrderItem.objects.create(
+                  order=order,
+                  product=product_obj,
+                  quantity=quantity,
+                  price=product_obj.prices
+            )
+
+      messages.success(request, f"Order placed for {quantity} x {product_obj.name}.")
       return redirect('products:order_confirmation', order_id=order.id)
 
 @login_required

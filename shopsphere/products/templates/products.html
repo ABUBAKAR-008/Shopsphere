@@ -26,6 +26,9 @@
     {% if category_name %}
     <p><a href="{% url 'products:allproducts' %}">View all products</a></p>
     {% endif %}
+    {% if search_query %}
+    <p>Search results for "{{ search_query }}"</p>
+    {% endif %}
     {% if allproducts %}
     <div class="grid-product">
         {% for product in allproducts %}
@@ -51,6 +54,7 @@
             <div class="buttons">
                   <form action="{% url 'products:buy_now' product.id %}" method="post" style="display:inline-block; margin:0;">
                         {% csrf_token %}
+                        <input type="number" name="quantity" min="1" max="{{ product.stock }}" value="1" style="width: 70px; margin-right: 8px;">
                         <button class="buy_now" type="submit">Buy Now</button>
                   </form>
                   <form action="{% url 'products:add_to_cart' product.id %}" method="post" style="display:inline-block; margin:0;">
