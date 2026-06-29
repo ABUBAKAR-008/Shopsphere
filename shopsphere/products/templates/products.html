@@ -22,7 +22,7 @@
 {% endblock %}
 {% block content2 %}
 <section class="section">
-    <h1>{% if category_name %}{{ category_name|title }} Products{% else %}All Products{% endif %}</h1>
+    <h1>{% if category_name %}{{ category_name|title }} Products {% else %}All Products{% endif %}</h1>
     {% if category_name %}
     <p><a href="{% url 'products:allproducts' %}">View all products</a></p>
     {% endif %}

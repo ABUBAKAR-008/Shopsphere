@@ -7,7 +7,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homemain, name='home'),
-    path('sports/',views.sports_catagory, name='sport_catagory'),
     path('accounts/', include('accounts.urls')),
     path('products/', include(('products.urls', 'products'), namespace='products')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
