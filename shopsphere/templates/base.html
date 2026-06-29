@@ -40,14 +40,6 @@
     </div>
 </header>
 
-{% if messages %}
-<div class="messages">
-    {% for message in messages %}
-        <div class="message {{ message.tags }}">{{ message }}</div>
-    {% endfor %}
-</div>
-{% endif %}
-
 <!-- ================= HERO SECTION ================= -->
 {% block content1 %}{% endblock %}
 <!-- ================= FEATURED PRODUCTS ================= -->
