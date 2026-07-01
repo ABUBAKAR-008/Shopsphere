@@ -1,47 +1,53 @@
-{% extends "base.html" %}
-{% load static %}
-{% block csslink %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+{% extends "base.html" %} {% load static %} {% block csslink %}
+<link rel="stylesheet" href="{% static 'style.css' %}" />
 {% endblock %}
 <!-- ================= HERO SECTION ================= -->
 
 {% block content1 %}
- <section class="hero">
-    <div class="hero-content">
-        <h1>Welcome to ShopSphere</h1>
-        <p>Your one-stop shop for everything you love</p>
-        <a href="{% url 'products:allproducts' %}"><button>Shop Now</button></a>
-    </div>
- </section>
-{% endblock %}
- <!-- ================= FEATURED PRODUCTS ================= -->
-{% block content2 %}
-  <section class="section">
-    <h2 class="Featured_product">🔥 Featured Products</h2>
-    <div class="grid">
-{% for product in products  %}
-        <div class="card">
-            {% if product.photo %}
-                <img src="{{ product.photo.url }}" alt="{{ product.name }}">
-            {% else %}
-                <img src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
-            {% endif %}
-            <h3><strong>Name:</strong>{{ product.name }}</h3>
-            <p><strong>Description:</strong> {{product.description}}</p>
-            <div class="hometag">
-            <p class="home_card_price"><strong>Price:</strong>{{ product.prices }}$</p>
-            <p class="home_card_catagory"><strong>Catagory:</strong>{{ product.catagory }}</p>
-            <p class="home_card_stock"><strong>Stock:</strong>{{ product.stock }}</p>
-            </div>
-        </div>
-        
-{% endfor %}
- 
-
-    </div>
-<div class="explore_more">
-    <a href="{% url 'products:allproducts' %}">Explore More</a>
-</div>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to ShopSphere</h1>
+    <p>Your one-stop shop for everything you love</p>
+    <a href="{% url 'products:allproducts' %}"><button>Shop Now</button></a>
+  </div>
 </section>
 {% endblock %}
-  <!-- ================= CATEGORIES ================= -->
+
+<!-- ================= FEATURED PRODUCTS ================= -->
+{% block content2 %}
+<section class="section">
+  <h2 class="Featured_product">🔥 Featured Products</h2>
+  <div class="grid">
+    {% for product in products %}
+    <div class="card">
+      {% if product.photo %}
+      <img src="{{ product.photo.url }}" alt="{{ product.name }}" />
+      {% else %}
+      <img
+        src="{% static 'images/placeholder.jpg' %}"
+        alt="{{ product.name }}"
+      />
+      {% endif %}
+      <h3><strong>Name:</strong>{{ product.name }}</h3>
+      <p><strong>Description:</strong> {{product.description}}</p>
+      <div class="hometag">
+        <p class="home_card_price">
+          <strong>Price:</strong>{{ product.prices }}$
+        </p>
+        <p class="home_card_catagory">
+          <strong>Catagory:</strong>{{ product.catagory }}
+        </p>
+        <p class="home_card_stock">
+          <strong>Stock:</strong>{{ product.stock }}
+        </p>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  <div class="explore_more">
+    <a href="{% url 'products:allproducts' %}">Explore More</a>
+  </div>
+</section>
+{% endblock %}
+<!-- ================= CATEGORIES ================= -->

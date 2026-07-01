@@ -1,71 +1,78 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}ShopSphere - Home{% endblock %}</title>
     {% block csslink %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
     {% endblock %}
-</head>
+  </head>
 
-<body>
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+      <div class="logo"><a href="{% url 'home' %}">🛒 ShopSphere</a></div>
 
-<!-- ================= NAVBAR ================= -->
-<header class="navbar">
-
-    <div class="logo"><a href="{% url 'home' %}">🛒 ShopSphere</a></div>
-     
-
-    <form class="search-box" action="{% url 'products:allproducts' %}" method="get">
-        <input type="text" name="q" placeholder="Search products..." value="{{ request.GET.q|default_if_none:'' }}">
+      <form
+        class="search-box"
+        action="{% url 'products:allproducts' %}"
+        method="get"
+      >
+        <input
+          type="text"
+          name="q"
+          placeholder="Search products..."
+          value="{{ request.GET.q|default_if_none:'' }}"
+        />
         <button type="submit">Search</button>
-    </form>
+      </form>
 
-    <div class="nav-links">
+      <div class="nav-links">
         <a href="{% url 'home' %}">Home</a>
-        <a class="prodct_link" href="{% url 'products:allproducts' %}">Products</a>
+        <a class="prodct_link" href="{% url 'products:allproducts' %}"
+          >Products</a
+        >
         {% if request.user.is_authenticated %}
-            <span>Hi, {{ request.user.username }}</span>
-            <a href="{% url 'accounts:logout' %}">Logout</a>
+        <span>Hi, {{ request.user.username }}</span>
+        <a href="{% url 'accounts:logout' %}">Logout</a>
         {% else %}
-            <a href="{% url 'accounts:login' %}">Login</a>
-            <a href="{% url 'accounts:register' %}">Register</a>
+        <a href="{% url 'accounts:login' %}">Login</a>
+        <a href="{% url 'accounts:register' %}">Register</a>
         {% endif %}
         <a href="{% url 'products:cart' %}">Cart 🛒</a>
         {% if request.user.is_authenticated %}
-            <a href="{% url 'products:order_history' %}">Buy history 🛍️</a>
+        <a href="{% url 'products:order_history' %}">Buy history 🛍️</a>
         {% endif %}
-    </div>
-</header>
+      </div>
+    </header>
 
-<!-- ================= HERO SECTION ================= -->
-{% block content1 %}{% endblock %}
-<!-- ================= FEATURED PRODUCTS ================= -->
-{% block content2 %}{% endblock %}
-<!-- ================= CATEGORIES ================= -->
-{% block content3 %}{% endblock %}
-<!-- ================= FOOTER ================= -->
-<footer class="footer" style="margin-bottom: 0;">
-    <div>
+    <!-- ================= HERO SECTION ================= -->
+    {% block content1 %}{% endblock %}
+    <!-- ================= FEATURED PRODUCTS ================= -->
+    {% block content2 %}{% endblock %}
+    <!-- ================= CATEGORIES ================= -->
+    {% block content3 %}{% endblock %}
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer" style="margin-bottom: 0">
+      <div>
         <h3>ShopSphere</h3>
         <p>Your trusted online store</p>
-    </div>
+      </div>
 
-    <div>
+      <div>
         <h4>Quick Links</h4>
-        <a href="#">About</a><br>
-        <a href="#">Contact</a><br>
+        <a href="#">About</a><br />
+        <a href="#">Contact</a><br />
         <a href="#">Privacy Policy</a>
-    </div>
+      </div>
 
-    <div>
+      <div>
         <h4>Contact</h4>
         <p>Email: support@shopsphere.com</p>
         <p>Phone: +92 300 0000000</p>
-    </div>
-</footer>
-
-</body>
+      </div>
+    </footer>
+  </body>
 </html>
